@@ -35,9 +35,7 @@ export default function LoginForm() {
     try {
       const result = await loginUser(data).unwrap();
       console.log("Успех:", result);
-      if (isSuccess) {
         navigate("/");
-      }
     } catch (err: any) {
       console.log("Обработанная ошибка:", err);
     }
