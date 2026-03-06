@@ -4,7 +4,7 @@ module.exports = {
   name: "auth",
   filename: "remoteEntry.js",
   exposes: {
-    "./AuthApp": "./src/AuthApp.tsx",
+    "./AuthApp": "./src/index.ts",
   },
   shared: {
     react: {
@@ -15,6 +15,11 @@ module.exports = {
     "react-dom": {
       singleton: true,
       requiredVersion: deps["react-dom"],
+      eager: true,
+    },
+    "react-router-dom": {
+      singleton: true,
+      requiredVersion: deps["react-router-dom"],
       eager: true,
     },
   },

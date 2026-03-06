@@ -8,8 +8,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/auth" replace />} />
-        <Route path="/auth" element={<AuthPage />} />
+        <Route path="/" element={<div>Main page</div>} />
+        <Route path="/auth/*" element={<AuthPage />} />
       </Routes>
     </BrowserRouter>
   );
