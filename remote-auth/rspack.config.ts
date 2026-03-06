@@ -13,7 +13,7 @@ export default defineConfig({
   context: __dirname,
 
   entry: {
-    main: "./src/main.tsx",
+    main: "./src/index.ts",
   },
 
   resolve: {
@@ -21,6 +21,9 @@ export default defineConfig({
   },
 
   devServer: {
+    hot: true, // включить HMR
+    liveReload: true, // перезагрузка при изменениях
+    open: true, // автоматически открывать браузер
     port: 3002,
     historyApiFallback: true,
   },

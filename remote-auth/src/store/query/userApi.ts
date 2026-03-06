@@ -1,21 +1,20 @@
-import {
-  createApi,
-  fetchBaseQuery,
-} from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { RegisterFormData } from "../../schema/registerSchema";
+import { LoginFormData } from "../../schema/loginSchema";
 
-type TLoginRequest = {
-  login: string;
-  password: string;
-};
-
-type TLoginResponse = {
+type TLoginOrRegisterResponse = {
   user: {
     login: string;
     id: string;
     created_at: string;
-  },
+  };
   token: string;
-}
+};
+
+type TRegisterRequest = {
+  login: string;
+  password: string;
+};
 
 export const userApi = createApi({
   reducerPath: "userApi",
@@ -23,9 +22,16 @@ export const userApi = createApi({
     baseUrl: "http://localhost:4001/",
   }),
   endpoints: (builder) => ({
-    loginUser: builder.mutation<TLoginResponse, TLoginRequest>({
-      query: (body: TLoginRequest) => ({
+    loginUser: builder.mutation<TLoginOrRegisterResponse, LoginFormData>({
+      query: (body) => ({
         url: "/auth/login",
+        method: "POST",
+        body,
+      }),
+    }),
+    registerUser: builder.mutation<TLoginOrRegisterResponse, RegisterFormData>({
+      query: (body) => ({
+        url: "auth/register",
         method: "POST",
         body,
       }),
@@ -33,4 +39,4 @@ export const userApi = createApi({
   }),
 });
 
-export const { useLoginUserMutation } = userApi;
+export const { useLoginUserMutation, useRegisterUserMutation } = userApi;

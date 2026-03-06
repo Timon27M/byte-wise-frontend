@@ -1,2 +1,2 @@
-export * from './compiled-types/AuthApp';
-export { default } from './compiled-types/AuthApp';
+export * from './compiled-types/index';
+export { default } from './compiled-types/index';
